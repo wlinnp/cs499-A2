@@ -1,0 +1,54 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myStudentLabel">Create or edit a Student</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.student.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.student.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.student.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_age">Age</label>
+            <input type="number" class="form-control" name="age" id="field_age"
+                    ng-model="vm.student.age"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_major">Major</label>
+            <input type="text" class="form-control" name="major" id="field_major"
+                    ng-model="vm.student.major"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_take">Take</label>
+            <select class="form-control" id="field_take" multiple name="take" ng-model="vm.student.takes" ng-options="classes as classes.id for classes in vm.classes track by classes.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="field_lecturer">Lecturer</label>
+            <select class="form-control" id="field_lecturer" name="lecturer" ng-model="vm.student.lecturer" ng-options="lecturer as lecturer.id for lecturer in vm.lecturers track by lecturer.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

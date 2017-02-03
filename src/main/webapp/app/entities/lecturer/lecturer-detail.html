@@ -1,0 +1,33 @@
+
+<div>
+    <h2><span>Lecturer</span> {{vm.lecturer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.lecturer.name}}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{vm.lecturer.title}}</span>
+        </dd>
+        <dt><span>Teach</span></dt>
+        <dd>
+            <span ng-repeat="teach in vm.lecturer.teaches">
+                <a ui-sref="classes-detail({id: teach.id})">{{teach.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="lecturer-detail.edit({id:vm.lecturer.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

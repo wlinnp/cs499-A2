@@ -1,0 +1,31 @@
+entity Student {
+	id String,
+    name String,
+    age Integer,
+    major String
+}
+
+entity Lecturer {
+	id String,
+    name String,
+    title String
+}
+
+entity Classes {
+	id String,
+    name String,
+    lecturer String,
+    major String
+}
+
+relationship ManyToMany {
+	Lecturer{teach} to Classes
+}
+
+relationship ManyToMany {
+	Student{take} to Classes
+}
+
+relationship OneToMany {
+	Lecturer{train} to Student
+}
